@@ -29,7 +29,9 @@ function postPokemon(p){
 
 function releasePokemon(pokemon){
     fetch(`${POKEMONS_URL}/${pokemon.id}`, {method:'DELETE'})
-    .then(() => {
+    .then(res => res.json())
+    .then((msg) => {
+        alert(msg['message'])
         document.querySelector(`[data-pokemon-id="${pokemon.id}"]`).parentElement.remove()
     })
 }
@@ -71,6 +73,7 @@ function renderPokemon(pokemon){
     let releaseBtn = document.createElement('button')
     releaseBtn.textContent = "Release"
     releaseBtn.dataset.pokemonId = pokemon.id
+    releaseBtn.style = "float: right; background: red;"
     releaseBtn.addEventListener('click', () => releasePokemon(pokemon))
     li.appendChild(releaseBtn)
     ul.appendChild(li)

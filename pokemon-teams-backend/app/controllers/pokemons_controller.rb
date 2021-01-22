@@ -9,7 +9,9 @@ class PokemonsController < ApplicationController
     end
 
     def destroy
-        render json: Pokemon.find(params[:id].to_i).destroy
+        pok = Pokemon.find(params[:id].to_i)
+        pok.destroy
+        render json: {message: pok.nickname + " released!"}
     end
 
     private

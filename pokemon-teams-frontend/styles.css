@@ -68,3 +68,7 @@ body {
     }
   }
   
+  form {
+    border-style:dotted; 
+    padding: 5px 5px 5px 5px
+  }
